@@ -1,0 +1,64 @@
+{
+  "consumer": {
+    "name": "ApiClient"
+  },
+  "interactions": [
+    {
+      "description": "A valid request for all products",
+      "providerStates": [
+        {
+          "name": "There is data"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/WeatherForecast"
+      },
+      "response": {
+        "body": [
+          {
+            "date": "2023-05-09T08:38:38.012717+07:00",
+            "summary": "Hot",
+            "temperatureC": 12,
+            "temperatureF": 53
+          },
+          {
+            "date": "2023-05-10T08:38:38.012732+07:00",
+            "summary": "Sweltering",
+            "temperatureC": 20,
+            "temperatureF": 67
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "WeatherForecastService"
+  }
+}
