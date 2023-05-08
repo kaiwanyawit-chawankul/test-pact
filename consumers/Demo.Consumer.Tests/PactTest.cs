@@ -12,7 +12,7 @@ public class PactTest
 {
     private IPactBuilderV3 pact;
         private readonly ApiClient ApiClient;
-        private readonly int port = 9000;
+        private readonly int port = 9001;
         private readonly List<object> products;
 
         public PactTest(ITestOutputHelper output)
@@ -29,7 +29,25 @@ public class PactTest
                     date = "2023-05-10T08:38:38.012732+07:00",
                     temperatureC = 20,
                     temperatureF = 67,
-                    SUMMARY = "Sweltering"
+                    summary = "Sweltering"
+                },
+                new {
+                    date = "2023-05-11T14:21:41.760305+07:00",
+                    temperatureC = 43,
+                    temperatureF = 109,
+                    summary = "Bracing"
+                },
+                new {
+                    date = "2023-05-12T14:21:41.760305+07:00",
+                    temperatureC = 17,
+                    temperatureF = 62,
+                    summary = "Warm"
+                },
+                new {
+                    date = "2023-05-13T14:21:41.760305+07:00",
+                    temperatureC = 19,
+                    temperatureF = 66,
+                    summary = "Bracing"
                 }
             };
 
@@ -52,7 +70,7 @@ public class PactTest
         public async void GetWeatherForecast()
         {
             // Arange
-            pact.UponReceiving("A valid request for all products")
+            pact.UponReceiving("A valid request for all forecast")
                     .Given("There is data")
                     .WithRequest(HttpMethod.Get, "/WeatherForecast")
                 .WillRespond()

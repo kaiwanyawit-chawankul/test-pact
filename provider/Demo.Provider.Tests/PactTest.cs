@@ -60,15 +60,11 @@ namespace tests
                         "ApiClient-WeatherForecastService.json"
                     )
                 );
-                // pactVerifier.FromPactFile(pactFile)
-                //     .WithProviderStateUrl(new Uri($"{_pactServiceUri}/provider-states"))
-                //     .ServiceProvider("WeatherForecastService", new Uri(_pactServiceUri))
-                //     .HonoursPactWith("ApiClient")
-                //     .Verify();
+
                 pactVerifier
                     .ServiceProvider("WeatherForecastService", new Uri(_pactServiceUri))
                     .WithFileSource(pactFile)
-                    .WithProviderStateUrl(new Uri($"{_pactServiceUri}/provider-states"))
+                    // .WithProviderStateUrl(new Uri($"{_pactServiceUri}/provider-states"))
                     .Verify();
             }
         }
