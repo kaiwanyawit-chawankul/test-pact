@@ -1,9 +1,11 @@
 # test-pact
 # How it works
-Create provider project+test
-Create consumer project+test
-Run provider project => save response
-Add Pact on consumer project with response
+1. Create provider project+test
+1. Create consumer project+test
+1. Run provider project => save response
+1. Add Pact on consumer project with response => create pact file (need to run provider)
+1. Add Pact on provider to verify consumer pact
+
 
 Create api project for provider
 dotnet new sln -n Demo.Provider

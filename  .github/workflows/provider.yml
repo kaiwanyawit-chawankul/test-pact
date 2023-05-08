@@ -1,0 +1,30 @@
+name: dotnet test
+
+on:
+  push:
+    paths:
+    - 'provider/**'
+    - 'pacts/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x' # Replace with the version of .NET Core SDK you are using
+
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./provider
+
+    - name: Build project
+      run: dotnet build --configuration Release
+      working-directory: ./provider
+
+    - name: Run tests
+      run: dotnet test --configuration Release
+      working-directory: ./provider
