@@ -1,7 +1,7 @@
 namespace Demo.Provider.Tests;
 using Microsoft.AspNetCore.Mvc.Testing;
-public class BasicTests
-    : IClassFixture<WebApplicationFactory<Program>>
+
+public class BasicTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory;
 
@@ -22,7 +22,9 @@ public class BasicTests
 
         // Assert
         response.EnsureSuccessStatusCode(); // Status Code 200-299
-        Assert.Equal("application/json; charset=utf-8",
-            response.Content.Headers.ContentType.ToString());
+        Assert.Equal(
+            "application/json; charset=utf-8",
+            response.Content.Headers.ContentType.ToString()
+        );
     }
 }

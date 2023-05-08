@@ -20,6 +20,7 @@ Microsoft.AspNetCore.Mvc.Testing
     dotnet add test/DemoMounteBank.Test package FluentAssertions
     dotnet sln add test/DemoMounteBank.Test
     dotnet test
+    dotnet add Demo.Provider.Tests package PactNet
 
 https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-7.0&viewFallbackFrom=aspnetcore-2.1
 
@@ -36,3 +37,8 @@ dotnet add Demo.Consumer.Tests reference Demo.Consumer.App
 dotnet add Demo.Consumer.Tests package PactNet
 https://github.com/DiUS/pact-workshop-dotnet-core-v3/
 dotnet add Demo.Consumer.Tests package PactNet.Native
+
+
+https://github.com/DiUS/pact-workshop-dotnet-core-v3/#step-2---integration-problems
+
+
