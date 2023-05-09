@@ -3,6 +3,7 @@ name: provider test
 on:
   push:
     paths:
+    - '.github/workflows/provider.yml'
     - 'provider/**'
     - 'pacts/**'
 

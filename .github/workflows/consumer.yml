@@ -3,6 +3,7 @@ name: consumer test
 on:
   push:
     paths:
+    - '.github/workflows/consumers.yml'
     - 'consumers/**'
 
 jobs:
