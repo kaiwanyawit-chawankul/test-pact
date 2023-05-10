@@ -70,3 +70,4 @@ docker-compose up
 # More reading
 - https://github.com/DiUS/pact-workshop-dotnet-core-v3/
 - https://github.com/DiUS/pact-workshop-dotnet-core-v3/#step-2---integration-problems
+- https://docs.pactflow.io/docs/examples/bi-directional/consumer/dotnet/
