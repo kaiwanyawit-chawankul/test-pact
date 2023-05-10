@@ -3,49 +3,70 @@
 
 # How it works
 1. Create provider project+test
-1. Create consumer project+test
-1. Run provider project => save response
-1. Add Pact on consumer project with response => create pact file (need to run provider)
-1. Add Pact on provider to verify consumer pact
-
-
-Create api project for provider
+create project script
+```
 dotnet new sln -n Demo.Provider
 dotnet new webapi -n Demo.Provider.Api -o provider/Demo.Provider.Api
 dotnet new xunit -n Demo.Provider.Tests -o provider/Demo.Provider.Tests
 dotnet sln add provider/Demo.Provider.Api
 dotnet sln add provider/Demo.Provider.Tests
 dotnet add provider/Demo.Provider.Tests reference provider/Demo.Provider.Api
-dotnet add provider/Demo.Provider.Tests package FluentAssertions
+```
+add references
+```
+dotnet add Demo.Provider.Tests package FluentAssertions
 dotnet add Demo.Provider.Tests package Microsoft.AspNetCore.Mvc.Testing -v 6
 Microsoft.AspNetCore.Mvc.Testing
-    dotnet new sln -n DemoMounteBank
-    dotnet new xunit -n DemoMounteBank.Test -o test/DemoMounteBank.Test
-    dotnet add test/DemoMounteBank.Test package FluentAssertions
-    dotnet sln add test/DemoMounteBank.Test
-    dotnet test
-    dotnet add Demo.Provider.Tests package PactNet
-
-https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-7.0&viewFallbackFrom=aspnetcore-2.1
-
-https://andrewlock.net/exploring-dotnet-6-part-6-supporting-integration-tests-with-webapplicationfactory-in-dotnet-6/
-
-
+dotnet add Demo.Provider.Tests package PactNet
+```
+2. Create consumer project+test
+create project
+```
 dotnet new sln -n Demo.Consumer
 dotnet new console -n Demo.Consumer.App -o Demo.Consumer.App
 dotnet new xunit -n Demo.Consumer.Tests -o Demo.Consumer.Tests
 dotnet sln add Demo.Consumer.App
 dotnet sln add Demo.Consumer.Tests
+```
 
+add references
+```
 dotnet add Demo.Consumer.Tests reference Demo.Consumer.App
 dotnet add Demo.Consumer.Tests package PactNet
-https://github.com/DiUS/pact-workshop-dotnet-core-v3/
 dotnet add Demo.Consumer.Tests package PactNet.Native
+```
+
+3. Run provider project => save response
+```
+dotnet run --project provider/Demo.Provider.Api
+```
+
+open swagger url to save response https://localhost:7029/swagger/index.html
 
 
-https://github.com/DiUS/pact-workshop-dotnet-core-v3/#step-2---integration-problems
+4. Generate a pact file
+ - Add Pact to Demo.Consumer.Tests
+ - Create a test consumers/Demo.Consumer.Tests/PactTest.cs
+ - add response from (3) to the test
+ - Generate create pact file (need to run consumer)
+```
+dotnet test --project consumers/Demo.Consumer.Tests
+```
+ - file will be saved as pacts/ApiClient-WeatherForecastService.json
+5. Verify consumer pact against provider
+ - Add Pact to Demo.Provider.Tests
+ - Create a test provider/Demo.Provider.Tests/PactTest.cs
+ - refer to pact file pacts/ApiClient-WeatherForecastService.json
+ - Verify consumer pact file (need to run provider)
+```
+dotnet test --project Provider/Demo.Provider.Tests
+```
+6. Add workflow to verify provider (unit test)
+7. Add workflow to verify consumer (integration test) using docker-compose
+```
+docker-compose up
+```
 
-docker-compose down
-docker-compose build --no-cache
-docker-compose up --build --no-start
-docker-compose up --build --remove-orphans
+# More reading
+- https://github.com/DiUS/pact-workshop-dotnet-core-v3/
+- https://github.com/DiUS/pact-workshop-dotnet-core-v3/#step-2---integration-problems
