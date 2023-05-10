@@ -1,4 +1,6 @@
 # test-pact
+[![consumer test](https://github.com/kaiwanyawit-chawankul/test-pact/actions/workflows/consumer.yml/badge.svg)](https://github.com/kaiwanyawit-chawankul/test-pact/actions/workflows/consumer.yml) [![provider test](https://github.com/kaiwanyawit-chawankul/test-pact/actions/workflows/provider.yml/badge.svg)](https://github.com/kaiwanyawit-chawankul/test-pact/actions/workflows/provider.yml)
+
 # How it works
 1. Create provider project+test
 1. Create consumer project+test
