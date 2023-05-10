@@ -28,7 +28,7 @@ public class ApiClient
             }
             catch (Exception ex)
             {
-                throw new Exception("There was a problem connecting to Products API.", ex);
+                throw new Exception("There was a problem connecting to WeatherForecast API.", ex);
             }
         }
     }

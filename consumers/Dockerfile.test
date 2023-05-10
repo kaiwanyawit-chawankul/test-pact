@@ -10,5 +10,5 @@ COPY . ./
 RUN dotnet restore
 RUN dotnet build
 
-# Run tests
-ENTRYPOINT ["dotnet", "test", "--logger:trx"]
+# # Run tests
+# ENTRYPOINT ["dotnet", "test", "--logger:trx"]

@@ -43,4 +43,7 @@ dotnet add Demo.Consumer.Tests package PactNet.Native
 
 https://github.com/DiUS/pact-workshop-dotnet-core-v3/#step-2---integration-problems
 
-
+docker-compose down
+docker-compose build --no-cache
+docker-compose up --build --no-start
+docker-compose up --build --remove-orphans

@@ -13,3 +13,4 @@ COPY --from=build /app/out .
 
 EXPOSE 80
 ENTRYPOINT ["dotnet", "Demo.Provider.Api.dll"]
+#ENTRYPOINT ["sh"]
